@@ -260,7 +260,7 @@ var fyAlert = {
 
     deepCopy : function(obj) {
 
-        var result = Array.isArray(obj) ? [] : {};
+        var result = this.isArray(obj) ? [] : {};
         for (var key in obj) {
             if (obj.hasOwnProperty(key)) {
               if (typeof obj[key] === 'object' && obj[key]!==null && !(obj[key] instanceof jQuery) ) {
@@ -325,7 +325,7 @@ var fyAlert = {
 
         //设置shadow样式
         this.alertShadow.length && this.alertShadow.css('z-index',zIndex-1);
-        if($.isArray(this.params.shadow)){
+        if(this.isArray(this.params.shadow)){
             this.alertShadow.length && this.alertShadow.css({
                 'opacity'    : this.params.shadow[0],
                 'background' : this.params.shadow[1],
@@ -374,6 +374,11 @@ var fyAlert = {
         this.alertBox.css(this.setAlertStyle);
         //设置位置
      },
+
+    isArray : function(o){
+        return Object.prototype.toString.call(o)== '[object Array]';
+    },
+
 
      //设置弹框内容高度
      setAlertContentHeight:function(){
