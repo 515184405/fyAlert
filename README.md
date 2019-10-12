@@ -1,6 +1,6 @@
-# fyAlert
+# [fyAlert](http://www.yu313.cn/unit/item/461)
 
-多动画，多特效弹框 兼容IE8浏览器
+多动画，多特效弹框 兼容IE8浏览器 [官网](http://www.yu313.cn/unit/item/461)
 
 
 # 参数介绍
