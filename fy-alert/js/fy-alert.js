@@ -135,7 +135,7 @@ var fyAlert = {
         var alertShadow = !this.params.shadow ? '' : $("<div class='fy-alert-shadow'></div>");
         var alertFooter = $("<div class='fy-alert-footer'></div>");
         var closeBtn = $("<button class='fy-alert-close'><i class='alert-iconfont'>&#xe671;</i></button>");
-        var iframe = $('<iframe class="fy-alert-iframe" src="'+this.params.content+'"></iframe>');
+        var iframe = $('<iframe name="iframe'+fyAlertKey+'" id="iframe'+fyAlertKey+'" class="fy-alert-iframe" src="'+this.params.content+'"></iframe>');
         var minmaxBtn = $("<button class='fy-alert-minmax'><i class='fy-alert-max-btn'></i></button>");
 
         var currentObj = {
@@ -422,6 +422,28 @@ var fyAlert = {
         //设置内容区域高度
         that.setAlertContentHeight();
        
+     },
+
+     //关闭当前iframe的方法
+     closeIframe : function(){
+        var alertBox = window.parent.$('iframe[name="'+window.name+'"]').closest('.fy-alert-box');
+        var alertShadow = alertBox.next('.fy-alert-shadow');
+        var animateClass = alertBox[0].className.split(" ");
+        animateClass = animateClass[animateClass.length - 1];
+        alertBox.addClass(animateClass+'_hide');
+        alertShadow.length && alertShadow.fadeOut(300);
+
+        setTimeout(function(){
+             alertBox.remove();
+             alertShadow.length && alertShadow.remove();
+        },300)
+
+     },
+
+     //关闭所有弹出层
+     closeAll:function(){
+        $("div[id^='alertKey']").remove();
+        $(".fy-alert-shadow").remove();
      },
 
      //销毁方法

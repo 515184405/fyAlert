@@ -185,7 +185,11 @@
 	<button onclick="aniExtend()">自定义弹出动画</button>
 	<button onclick="minmaxScreen()">开启全屏按钮</button>
 	<button onclick="skin()">开启其他风格</button>
-	<button onclick="addMesk()">层上层弹框</button>
+    <button onclick="addMesk()">层上层弹框</button>
+    <button onclick="iframeCloseFun()">iframe自我关闭</button>
+	<button onclick="fyAlert.closeAll()">关闭当前页面所有弹出层</button>
+
+
 
 <script src="jquery.min.js"></script>
 <script type="text/javascript" src="fy-alert/js/fy-alert.min.js"></script>
@@ -203,6 +207,7 @@
         function content1(){ 
         	fyAlert.alert({
         		title:'文本提示框',
+                shadow:false,
         		content: '您觉得这个这个弹框动画怎么样',
         		btns    : {                  //按钮组
 	                '很好' : function(obj){
@@ -219,6 +224,7 @@
         function content2(){ 
         	fyAlert.alert({
         		title:'DOM提示框',
+                shadow:false,
         		// area : ['250px','auto'],
         		content: $("#contentText"),
         		btns    : {                  //按钮组
@@ -236,6 +242,7 @@
         function content3(){ 
         	fyAlert.alert({
         		type:2,
+                shadow:false,
         		title:'文本提示框',
         		animateType : 1,
         		area : ['380px','90%'],
@@ -258,6 +265,7 @@
         function bottomFun(){ 
         	fyAlert.alert({
         		type:2,
+                shadow:false,
         		minmax:true,
         		animateType : 1,
         		direction:['center','bottom'],
@@ -397,6 +405,28 @@
             })
         }
 
+
+        function iframeCloseFun(){
+            fyAlert.alert({
+                minmax   : true,
+                type     : 2,
+                title    : 'iframe点击关闭自己的弹框',
+                area     : ['450px','80%'],
+                content  : 'iframe.html',//$("#contentText"),    //内容
+                btns     : {                  //按钮组
+                    '确定' : function(obj){
+                        console.log(obj);
+                        obj.destory();   //在页面上
+                    },
+                    '取消' : function(obj){
+                        obj.destory(); //销毁
+                    }
+                }     
+            })
+        }
+
+
+        
        
 
 
